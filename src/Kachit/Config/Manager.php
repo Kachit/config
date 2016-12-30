@@ -20,10 +20,12 @@ class Manager
      * @param ReaderInterface $reader
      * @param WriterInterface $writer
      */
-    public function __construct(ReaderInterface $reader, WriterInterface $writer)
+    public function __construct(ReaderInterface $reader, WriterInterface $writer = null)
     {
         $this->setReader($reader);
-        $this->setWriter($writer);
+        if ($writer) {
+            $this->setWriter($writer);
+        }
     }
 
     /**
@@ -31,7 +33,7 @@ class Manager
      * @param string|null $path
      * @return ConfigInterface
      */
-    public function read(ConfigInterface $config = null, string $path = null) :ConfigInterface
+    public function read(string $path = null, ConfigInterface $config = null) :ConfigInterface
     {
         $data = $this->reader->read($path);
         $config = ($config) ? $config : new Config();
