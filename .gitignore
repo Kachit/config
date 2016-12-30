@@ -1,0 +1,7 @@
+# User-specific stuff:
+.idea
+
+# composer
+/vendor/
+composer.lock
+tests/_output/*

@@ -1,0 +1,16 @@
+{
+  "name": "Kachit/config",
+  "description": "Simple config management library",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0"
+  },
+  "require-dev": {
+    "codeception/codeception": ">=2.2 <2.2.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kachit\\Config\\": "./src/Kachit/Config"
+    }
+  }
+}
