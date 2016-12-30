@@ -42,8 +42,8 @@ class ConfigTest extends \Codeception\Test\Unit
         $data = ['foo' => 'bar', 'buz' => ['foo' => 'bar']];
         $config = new Config($data);
         $this->assertTrue(is_object($config->buz));
-        $this->assertInstanceOf('Orbitum\Config\Config', $config->buz);
-        $this->assertInstanceOf('Orbitum\Config\ConfigInterface', $config->buz);
+        $this->assertInstanceOf('Kachit\Config\Config', $config->buz);
+        $this->assertInstanceOf('Kachit\Config\ConfigInterface', $config->buz);
         $this->assertEquals($data['buz'], $config->buz->toArray());
     }
 
@@ -54,8 +54,8 @@ class ConfigTest extends \Codeception\Test\Unit
         $data = ['foo' => 'bar', 'buz' => $object];
         $config = new Config($data);
         $this->assertTrue(is_object($config->buz));
-        $this->assertInstanceOf('Orbitum\Config\Config', $config->buz);
-        $this->assertInstanceOf('Orbitum\Config\ConfigInterface', $config->buz);
+        $this->assertInstanceOf('Kachit\Config\Config', $config->buz);
+        $this->assertInstanceOf('Kachit\Config\ConfigInterface', $config->buz);
         $this->assertEquals(['foo' => 'bar'], $config->buz->toArray());
     }
 
