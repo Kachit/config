@@ -1,0 +1,2 @@
+# for php-coveralls
+coverage_clover: tests/_output/coverage/clover.xml
