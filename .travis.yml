@@ -10,4 +10,4 @@ before_script:
 
 script:
  - mkdir -p build/logs
- - vendor/bin/codecept run --coverage --no-colors
+ - vendor/bin/codecept run --coverage --no-colors --coverage-xml
