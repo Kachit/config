@@ -1,5 +1,4 @@
 <?php
-use Kachit\Config\Config;
 use Kachit\Config\Manager;
 use Codeception\Util\Debug;
 use Kachit\Config\Reader\Json as JsonReader;
