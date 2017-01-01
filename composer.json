@@ -1,5 +1,5 @@
 {
-  "name": "Kachit/config",
+  "name": "kachit/config",
   "description": "Simple config management library",
   "license": "MIT",
   "require": {
