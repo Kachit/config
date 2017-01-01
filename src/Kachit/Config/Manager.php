@@ -31,7 +31,7 @@ class Manager
     /**
      * @param ConfigInterface|null $config
      * @param string|null $path
-     * @return ConfigInterface
+     * @return ConfigInterface|\Stdclass
      */
     public function read(string $path = null, ConfigInterface $config = null) :ConfigInterface
     {
