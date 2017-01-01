@@ -1,6 +1,7 @@
 {
   "name": "kachit/config",
   "description": "Simple config management library",
+  "keywords": ["config"],
   "license": "MIT",
   "require": {
     "php": ">=7.0"
