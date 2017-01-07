@@ -65,21 +65,6 @@ class ConfigManagerTest extends \Codeception\Test\Unit
     /**
      *
      */
-    public function testReadConfigYaml()
-    {
-        $reader = new YamlReader();
-        $manager = new Manager($reader);
-        $config = $manager->read('tests/_data/stubs/read/config.yml');
-        $this->assertTrue(is_object($config));
-        $this->assertInstanceOf('Kachit\Config\Config', $config);
-        $this->assertInstanceOf('Kachit\Config\ConfigInterface', $config);
-        $this->assertEquals('bar', $config->foo);
-        $this->assertEquals(123, $config->baz);
-    }
-
-    /**
-     *
-     */
     public function testWriteConfigJson()
     {
         $reader = new JsonReader();
