@@ -21,7 +21,7 @@ interface ConfigInterface
      * @param string $key
      * @return bool
      */
-    public function has(string $key);
+    public function has(string $key): bool;
 
     /**
      * @param string $key
@@ -39,7 +39,7 @@ interface ConfigInterface
     /**
      * @return bool
      */
-    public function isEmpty();
+    public function isEmpty(): bool;
 
     /**
      * @param array $array

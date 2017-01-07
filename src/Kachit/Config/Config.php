@@ -30,7 +30,7 @@ class Config extends \StdClass implements ConfigInterface, \ArrayAccess, \JsonSe
      * @param string $key
      * @return bool
      */
-    public function has(string $key)
+    public function has(string $key): bool
     {
         $key = $this->convertOffset($key);
         return isset($this->$key);
@@ -64,7 +64,7 @@ class Config extends \StdClass implements ConfigInterface, \ArrayAccess, \JsonSe
     /**
      * @return bool
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return empty(get_object_vars($this));
     }

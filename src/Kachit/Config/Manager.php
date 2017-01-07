@@ -47,6 +47,7 @@ class Manager
      */
     public function write(ConfigInterface $config, string $path = null) :bool
     {
+        $this->checkWriter();
         return $this->writer->write($config, $path);
     }
 
@@ -68,5 +69,15 @@ class Manager
     {
         $this->writer = $writer;
         return $this;
+    }
+
+    /**
+     * @throws ConfigException
+     */
+    protected function checkWriter()
+    {
+        if (empty($this->writer)) {
+            throw new ConfigException('Config writer is not available');
+        }
     }
 }
