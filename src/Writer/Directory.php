@@ -2,13 +2,14 @@
 /**
  * Class Directory
  *
- * @package Orbitum\Billing\Common\Config\Loader
+ * @package Kachit\Config\Writer
  * @author Kachit
  */
 namespace Kachit\Config\Writer;
 
 use Kachit\Config\ConfigInterface;
 use Kachit\Config\WriterInterface;
+
 use FilesystemIterator;
 use SplFileInfo;
 

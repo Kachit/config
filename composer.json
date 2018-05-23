@@ -7,11 +7,11 @@
     "php": ">=7.0"
   },
   "require-dev": {
-    "codeception/codeception": ">=2.2 <2.2.7"
+    "codeception/codeception": ">=2.2 <2.5"
   },
   "autoload": {
     "psr-4": {
-      "Kachit\\Config\\": "./src/Kachit/Config"
+      "Kachit\\Config\\": "./src/"
     }
   }
 }
