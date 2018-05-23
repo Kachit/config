@@ -1,7 +1,9 @@
 <?php
 /**
  * Class Php
+ *
  * @package Kachit\Config\Writer
+ * @author Kachit
  */
 namespace Kachit\Config\Writer;
 

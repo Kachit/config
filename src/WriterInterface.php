@@ -1,9 +1,12 @@
 <?php
+/**
+ * Class WriterInterface
+ *
+ * @package Kachit\Config
+ * @author Kachit
+ */
 namespace Kachit\Config;
 
-/**
- * Class ReaderInterface
- */
 interface WriterInterface
 {
     /**
@@ -11,5 +14,5 @@ interface WriterInterface
      * @param string|null $path
      * @return bool
      */
-    public function write(ConfigInterface $config, string $path = null) :bool;
+    public function write(ConfigInterface $config, string $path = null): bool;
 }

@@ -2,13 +2,14 @@
 /**
  * Class FileFactory
  *
- * @author Kachit
  * @package Kachit\Config\Reader
+ * @author Kachit
  */
 namespace Kachit\Config\Reader;
 
 use Kachit\Config\ConfigException;
 use Kachit\Config\ReaderInterface;
+use Kachit\Config\Extensions;
 
 class FileFactory extends AbstractFile
 {
@@ -16,12 +17,13 @@ class FileFactory extends AbstractFile
      * @var array
      */
     private $readersMap = [
-        'ini' => Ini::class,
-        'php' => Php::class,
-        'json' => Json::class,
-        'yaml' => Yaml::class,
-        'yml' => Yaml::class,
+        Extensions::INI => Ini::class,
+        Extensions::PHP => Php::class,
+        Extensions::JSON => Json::class,
+        Extensions::YAML => Yaml::class,
+        Extensions::YML => Yaml::class,
     ];
+
     /**
      * @param string $path
      * @return array

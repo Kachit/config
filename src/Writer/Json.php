@@ -1,7 +1,9 @@
 <?php
 /**
  * Class Json
+ *
  * @package Kachit\Config\Writer
+ * @author Kachit
  */
 namespace Kachit\Config\Writer;
 

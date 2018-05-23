@@ -1,10 +1,15 @@
 <?php
-namespace Kachit\Config;
-
 /**
  * Class Config
+ *
+ * @package Kachit\Config
+ * @author Kachit
  */
-class Config extends \StdClass implements ConfigInterface, \ArrayAccess, \JsonSerializable
+namespace Kachit\Config;
+
+use StdClass;
+
+class Config extends StdClass implements ConfigInterface, \ArrayAccess, \JsonSerializable
 {
     /**
      * Config constructor.
@@ -189,7 +194,7 @@ class Config extends \StdClass implements ConfigInterface, \ArrayAccess, \JsonSe
      * @param mixed $offset
      * @return string
      */
-    protected function convertOffset($offset) :string
+    protected function convertOffset($offset): string
     {
         return (string)$offset;
     }

@@ -1,7 +1,9 @@
 <?php
 /**
  * Class AbstractReader
+ *
  * @package Kachit\Config\Reader
+ * @author Kachit
  */
 namespace Kachit\Config\Writer;
 

@@ -1,11 +1,12 @@
 <?php
 /**
  * Class AbstractFile
+ *
  * @package Kachit\Config\Reader
+ * @author Kachit
  */
 namespace Kachit\Config\Writer;
 
-use Kachit\Config\ConfigException;
 use Kachit\Config\ConfigInterface;
 
 abstract class AbstractFile extends AbstractWriter
@@ -30,7 +31,6 @@ abstract class AbstractFile extends AbstractWriter
 
     /**
      * @param string $path
-     * @throws ConfigException
      */
     protected function createDirectory($path)
     {

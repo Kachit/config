@@ -1,8 +1,12 @@
 <?php
-namespace Kachit\Config;
 /**
  * Class ConfigInterface
+ *
+ * @package Kachit\Config
+ * @author Kachit
  */
+namespace Kachit\Config;
+
 interface ConfigInterface
 {
     /**
@@ -28,13 +32,13 @@ interface ConfigInterface
      * @param $value
      * @return ConfigInterface
      */
-    public function set(string $key, $value) :ConfigInterface;
+    public function set(string $key, $value): ConfigInterface;
 
     /**
      * @param string $key
      * @return ConfigInterface
      */
-    public function remove(string $key) :ConfigInterface;
+    public function remove(string $key): ConfigInterface;
 
     /**
      * @return bool
@@ -45,11 +49,11 @@ interface ConfigInterface
      * @param array $array
      * @return ConfigInterface
      */
-    public function fillFromArray(array $array = []) :ConfigInterface;
+    public function fillFromArray(array $array = []): ConfigInterface;
 
     /**
      * @param ConfigInterface $config
      * @return ConfigInterface
      */
-    public function merge(ConfigInterface $config) :ConfigInterface;
+    public function merge(ConfigInterface $config): ConfigInterface;
 }

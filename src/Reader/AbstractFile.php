@@ -1,7 +1,9 @@
 <?php
 /**
  * Class AbstractFile
+ *
  * @package Kachit\Config\Reader
+ * @author Kachit
  */
 namespace Kachit\Config\Reader;
 
@@ -12,6 +14,7 @@ abstract class AbstractFile extends AbstractReader
     /**
      * @param null $path
      * @return array
+     * @throws ConfigException
      */
     public function read($path = null): array
     {
@@ -23,7 +26,7 @@ abstract class AbstractFile extends AbstractReader
      * @param string $path
      * @return array
      */
-    abstract protected function readFile(string $path);
+    abstract protected function readFile(string $path): array;
 
     /**
      * @param string $path

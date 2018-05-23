@@ -1,6 +1,9 @@
 <?php
 /**
- * Class Php reader
+ * Class Yaml reader
+ *
+ * @package Kachit\Config\Reader
+ * @author Kachit
  */
 namespace Kachit\Config\Reader;
 

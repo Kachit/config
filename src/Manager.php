@@ -1,8 +1,12 @@
 <?php
-namespace Kachit\Config;
 /**
  * Class Manager
+ *
+ * @package Kachit\Config
+ * @author Kachit
  */
+namespace Kachit\Config;
+
 class Manager
 {
     /**
@@ -31,9 +35,9 @@ class Manager
     /**
      * @param ConfigInterface|null $config
      * @param string|null $path
-     * @return ConfigInterface|\Stdclass
+     * @return ConfigInterface|\StdClass
      */
-    public function read(string $path = null, ConfigInterface $config = null) :ConfigInterface
+    public function read(string $path = null, ConfigInterface $config = null): ConfigInterface
     {
         $data = $this->reader->read($path);
         $config = ($config) ? $config : new Config();
@@ -44,8 +48,9 @@ class Manager
      * @param ConfigInterface $config
      * @param string|null $path
      * @return bool
+     * @throws ConfigException
      */
-    public function write(ConfigInterface $config, string $path = null) :bool
+    public function write(ConfigInterface $config, string $path = null): bool
     {
         $this->checkWriter();
         return $this->writer->write($config, $path);
@@ -55,7 +60,7 @@ class Manager
      * @param ReaderInterface $reader
      * @return Manager
      */
-    public function setReader(ReaderInterface $reader)
+    public function setReader(ReaderInterface $reader): Manager
     {
         $this->reader = $reader;
         return $this;
@@ -65,7 +70,7 @@ class Manager
      * @param WriterInterface $writer
      * @return Manager
      */
-    public function setWriter(WriterInterface $writer)
+    public function setWriter(WriterInterface $writer): Manager
     {
         $this->writer = $writer;
         return $this;

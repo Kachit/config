@@ -1,10 +1,15 @@
 <?php
-namespace Kachit\Config;
-
 /**
  * Class ConfigException
+ *
+ * @package Kachit\Config
+ * @author Kachit
  */
-class ConfigException extends \Exception
+namespace Kachit\Config;
+
+use Exception;
+
+class ConfigException extends Exception
 {
 
 }
