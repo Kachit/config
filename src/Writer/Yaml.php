@@ -8,6 +8,7 @@
 namespace Kachit\Config\Writer;
 
 use Kachit\Config\ConfigInterface;
+use Kachit\Config\Extensions;
 
 class Yaml extends AbstractFile
 {
@@ -19,5 +20,13 @@ class Yaml extends AbstractFile
     public function writeFile(ConfigInterface $config, string $path = null): bool
     {
         return yaml_emit_file($path, $config->toArray());
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExtension(): string
+    {
+        return Extensions::YAML;
     }
 }

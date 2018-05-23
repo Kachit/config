@@ -7,6 +7,8 @@
  */
 namespace Kachit\Config\Reader;
 
+use Kachit\Config\Extensions;
+
 class Json extends AbstractFile
 {
     /**
@@ -16,5 +18,13 @@ class Json extends AbstractFile
     protected function readFile(string $path): array
     {
         return json_decode(file_get_contents($path), true);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExtension(): string
+    {
+        return Extensions::JSON;
     }
 }

@@ -1,10 +1,10 @@
 <?php
 use Kachit\Config\Config;
 use Codeception\Util\Debug;
-use Kachit\Config\Reader\FileFactory as Reader;
+use Kachit\Config\Reader\Json as Reader;
 use Kachit\Config\Manager;
 
-class ReaderFileFactoryTest extends \Codeception\Test\Unit
+class JsonFileReaderTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -14,14 +14,13 @@ class ReaderFileFactoryTest extends \Codeception\Test\Unit
     /**
      *
      */
-    public function testReadConfigJson()
+    public function testReadConfigWithExtension()
     {
         $reader = new Reader();
         $manager = new Manager($reader);
         $config = $manager->read('tests/_data/stubs/read/config.json');
         $this->assertTrue(is_object($config));
         $this->assertInstanceOf('Kachit\Config\Config', $config);
-        $this->assertInstanceOf('Kachit\Config\ConfigInterface', $config);
         $this->assertEquals('bar', $config->foo);
         $this->assertEquals(123, $config->baz);
     }
@@ -29,25 +28,11 @@ class ReaderFileFactoryTest extends \Codeception\Test\Unit
     /**
      *
      */
-    public function testReadConfigIni()
+    public function testReadConfigWithBasePath()
     {
-        $reader = new Reader();
+        $reader = new Reader(['base_path' => 'tests/_data/stubs/read']);
         $manager = new Manager($reader);
-        $config = $manager->read('tests/_data/stubs/read/config.ini');
-        $this->assertTrue(is_object($config));
-        $this->assertInstanceOf('Kachit\Config\Config', $config);
-        $this->assertInstanceOf('Kachit\Config\ConfigInterface', $config);
-        $this->assertEquals('bar', $config->foo);
-        $this->assertEquals(123, $config->baz);
-    }
-    /**
-     *
-     */
-    public function testReadConfigPhp()
-    {
-        $reader = new Reader();
-        $manager = new Manager($reader);
-        $config = $manager->read('tests/_data/stubs/read/config.php');
+        $config = $manager->read('config.json');
         $this->assertTrue(is_object($config));
         $this->assertInstanceOf('Kachit\Config\Config', $config);
         $this->assertEquals('bar', $config->foo);
@@ -57,24 +42,28 @@ class ReaderFileFactoryTest extends \Codeception\Test\Unit
     /**
      *
      */
-    public function testReadConfigNotExistingFile()
+    public function testReadConfigWithoutExtension()
     {
-        $this->expectException('Kachit\Config\ConfigException');
-        $this->expectExceptionMessage('File with extension "foo" is not supported');
         $reader = new Reader();
         $manager = new Manager($reader);
-        $manager->read('tests/_data/stubs/read/config.foo');
+        $config = $manager->read('tests/_data/stubs/read/config');
+        $this->assertTrue(is_object($config));
+        $this->assertInstanceOf('Kachit\Config\Config', $config);
+        $this->assertEquals('bar', $config->foo);
+        $this->assertEquals(123, $config->baz);
     }
 
     /**
      *
      */
-    public function testReadConfigNotAvailableFile()
+    public function testReadConfigWithoutExtensionWithSlash()
     {
-        $this->expectException('Kachit\Config\ConfigException');
-        $this->expectExceptionMessage('File with extension "inc" is not supported');
         $reader = new Reader();
         $manager = new Manager($reader);
-        $manager->read('tests/_data/stubs/read/config.inc');
+        $config = $manager->read('tests/_data/stubs/read/config/');
+        $this->assertTrue(is_object($config));
+        $this->assertInstanceOf('Kachit\Config\Config', $config);
+        $this->assertEquals('bar', $config->foo);
+        $this->assertEquals(123, $config->baz);
     }
 }

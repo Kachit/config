@@ -8,6 +8,7 @@
 namespace Kachit\Config\Writer;
 
 use Kachit\Config\ConfigInterface;
+use Kachit\Config\Extensions;
 
 class Json extends AbstractFile
 {
@@ -19,5 +20,13 @@ class Json extends AbstractFile
     public function writeFile(ConfigInterface $config, string $path = null): bool
     {
         return file_put_contents($path, json_encode($config, JSON_PRETTY_PRINT));
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExtension(): string
+    {
+        return Extensions::JSON;
     }
 }

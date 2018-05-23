@@ -7,6 +7,8 @@
  */
 namespace Kachit\Config\Reader;
 
+use Kachit\Config\Extensions;
+
 class Php extends AbstractFile
 {
     /**
@@ -16,5 +18,13 @@ class Php extends AbstractFile
     protected function readFile(string $path): array
     {
         return include $path;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExtension(): string
+    {
+        return Extensions::PHP;
     }
 }

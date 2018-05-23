@@ -7,6 +7,7 @@
  */
 namespace Kachit\Config\Writer;
 
+use Kachit\Config\Config;
 use Kachit\Config\ConfigInterface;
 use Kachit\Config\WriterInterface;
 
@@ -37,6 +38,12 @@ class Directory implements WriterInterface
      */
     public function write(ConfigInterface $config, string $path = null): bool
     {
-        return true;
+        $result = false;
+        $ds = DIRECTORY_SEPARATOR;
+        foreach ($config->toArray() as $fileName => $data) {
+            $filePath = rtrim($path, $ds) . $ds . $fileName;
+            $result = $this->writer->write(new Config($data), $filePath);
+        }
+        return $result;
     }
 }

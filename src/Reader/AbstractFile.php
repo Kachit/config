@@ -18,6 +18,7 @@ abstract class AbstractFile extends AbstractReader
      */
     public function read($path = null): array
     {
+        $path = $this->generateFilePath($path);
         $this->checkFile($path);
         return $this->readFile($path);
     }
@@ -27,6 +28,28 @@ abstract class AbstractFile extends AbstractReader
      * @return array
      */
     abstract protected function readFile(string $path): array;
+
+    /**
+     * @return string
+     */
+    abstract protected function getExtension(): string;
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    protected function generateFilePath(string $path): string
+    {
+        $ds = DIRECTORY_SEPARATOR;
+        $extension = pathinfo($path, PATHINFO_EXTENSION);
+        if (isset($this->options['base_path'])) {
+            $path = rtrim($this->options['base_path'], $ds) . $ds . ltrim($path, $ds);
+        }
+        if (empty($extension)) {
+            $path = rtrim($path, $ds) . '.' . $this->getExtension();
+        }
+        return $path;
+    }
 
     /**
      * @param string $path

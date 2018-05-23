@@ -7,6 +7,8 @@
  */
 namespace Kachit\Config\Reader;
 
+use Kachit\Config\Extensions;
+
 class Yaml extends AbstractFile
 {
     /**
@@ -16,5 +18,13 @@ class Yaml extends AbstractFile
     protected function readFile(string $path): array
     {
         return yaml_parse_file($path);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExtension(): string
+    {
+        return Extensions::YAML;
     }
 }

@@ -7,6 +7,8 @@
  */
 namespace Kachit\Config\Reader;
 
+use Kachit\Config\Extensions;
+
 class Ini extends AbstractFile
 {
     /**
@@ -16,5 +18,13 @@ class Ini extends AbstractFile
     protected function readFile(string $path): array
     {
         return parse_ini_file($path);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExtension(): string
+    {
+        return Extensions::INI;
     }
 }

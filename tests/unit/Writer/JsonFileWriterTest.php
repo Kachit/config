@@ -1,11 +1,11 @@
 <?php
 use Kachit\Config\Config;
 use Codeception\Util\Debug;
-use Kachit\Config\Reader\FileFactory as Reader;
-use Kachit\Config\Writer\FileFactory as Writer;
+use Kachit\Config\Reader\Json as Reader;
+use Kachit\Config\Writer\Json as Writer;
 use Kachit\Config\Manager;
 
-class WriterFileFactoryTest extends \Codeception\Test\Unit
+class JsonFileWriterTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -15,7 +15,7 @@ class WriterFileFactoryTest extends \Codeception\Test\Unit
     /**
      *
      */
-    public function testWriteConfigJson()
+    public function testWriteConfigWithExtension()
     {
         $reader = new Reader();
         $writer = new Writer();
@@ -30,29 +30,30 @@ class WriterFileFactoryTest extends \Codeception\Test\Unit
     /**
      *
      */
-    public function testWriteConfigPhp()
+    public function testWriteConfigWithBasePath()
     {
         $reader = new Reader();
-        $writer = new Writer();
+        $writer = new Writer(['base_path' => 'tests/_data/stubs/write']);
         $manager = new Manager($reader, $writer);
-        $config = $manager->read('tests/_data/stubs/read/config.php');
+        $config = $manager->read('tests/_data/stubs/read/config');
         $config->list = [1, 2, 3];
-        $manager->write($config, 'tests/_data/stubs/write/config.php');
-        $actual = $manager->read('tests/_data/stubs/write/config.php');
+        $manager->write($config, 'config');
+        $actual = $manager->read('tests/_data/stubs/write/config');
         $this->assertEquals($config->toArray(), $actual->toArray());
     }
 
     /**
      *
      */
-    public function testWriteConfigNotSupportFile()
+    public function testWriteConfigWithoutExtension()
     {
-        $this->expectException('Kachit\Config\ConfigException');
-        $this->expectExceptionMessage('File with extension "inc" is not supported');
         $reader = new Reader();
         $writer = new Writer();
         $manager = new Manager($reader, $writer);
-        $config = $manager->read('tests/_data/stubs/read/config.php');
-        $manager->write($config, 'tests/_data/stubs/write/config.inc');
+        $config = $manager->read('tests/_data/stubs/read/config');
+        $config->list = [1, 2, 3];
+        $manager->write($config, 'tests/_data/stubs/write/config');
+        $actual = $manager->read('tests/_data/stubs/write/config');
+        $this->assertEquals($config->toArray(), $actual->toArray());
     }
 }

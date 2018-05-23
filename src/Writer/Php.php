@@ -8,6 +8,7 @@
 namespace Kachit\Config\Writer;
 
 use Kachit\Config\ConfigInterface;
+use Kachit\Config\Extensions;
 
 class Php extends AbstractFile
 {
@@ -19,5 +20,13 @@ class Php extends AbstractFile
     public function writeFile(ConfigInterface $config, string $path = null): bool
     {
         return file_put_contents($path, "<?php \nreturn " . var_export($config->toArray(), true) . ";");
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExtension(): string
+    {
+        return Extensions::PHP;
     }
 }

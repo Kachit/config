@@ -11,7 +11,7 @@ use Kachit\Config\ConfigException;
 use Kachit\Config\ReaderInterface;
 use Kachit\Config\Extensions;
 
-class FileFactory extends AbstractFile
+class FileFactory extends AbstractReader
 {
     /**
      * @var array
@@ -29,14 +29,14 @@ class FileFactory extends AbstractFile
      * @return array
      * @throws ConfigException
      */
-    protected function readFile(string $path): array
+    public function read($path = null): array
     {
         $extension = pathinfo($path, PATHINFO_EXTENSION);
         if (!isset($this->readersMap[$extension])) {
             throw new ConfigException(sprintf('File with extension "%s" is not supported', $extension));
         }
         /* @var ReaderInterface $reader */
-        $reader = new $this->readersMap[$extension];
+        $reader = new $this->readersMap[$extension]($this->options);
         return $reader->read($path);
     }
 }
